@@ -1,17 +1,47 @@
 
-import Registration from "./component/Registration"
-import Form from "./component/Form"
+import Deletes from './Apicalling/Deletes';
+import Get from './ApiCalling/Get';
+import Mainapi from './Apicalling/MainApi';
+import Post from './Apicalling/Post';
+import Put from './Apicalling/Put';
+import './App.css'
+import Form from './Component/Form'
+import MainContent from './Content/MainContent';
+import Mainpage from './Mainpage/Mainpage';
+import About from './Nestedrouting/About';
+import Contact from './Nestedrouting/Contact';
+import Home from './Nestedrouting/Home';
+import Style from './Style/Style'
+import Useeffecthook from './Useeffect/Useeffecthook'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {BrowserRouter,Routes,Route} from "react-router-dom";
+function App() {
+ 
 
-
-
-function App(){
-  return(
-    <>
-    <h2>Registration Page :</h2>
-    <Registration></Registration>
-    <h2>Form Page:</h2>
-    <Form></Form>
-    </>
+  return (
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Mainpage></Mainpage>}>
+      <Route path="home" element={<Home></Home>}></Route>
+      <Route path="about" element={<About></About>}></Route>
+      <Route path='contact' element={<Contact></Contact>}></Route>
+      </Route>
+      <Route path='/style' element={<Style></Style>}></Route>
+      <Route path='/propsandusestate' element={<Form></Form>}></Route>
+      <Route path='/useeffect' element={<Useeffecthook></Useeffecthook>}></Route>
+      {/* nexted routing */}
+      <Route path='/mainapi' element={<Mainapi></Mainapi>}>
+      <Route path='post' element={<Post></Post>}></Route>
+      <Route path='get' element={<Get></Get>}></Route>
+      <Route path='put' element={<Put></Put>}></Route>
+      <Route path="delete" element={<Deletes></Deletes>}></Route>
+      </Route>
+      <Route path='/content' element={<MainContent></MainContent>}></Route>
+    
+    </Routes>
+    
+   </BrowserRouter>
   )
 }
-export default App;
+
+export default App
